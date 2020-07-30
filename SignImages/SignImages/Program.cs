@@ -8,6 +8,7 @@ namespace SignImages
         static void Main(string[] args)
         {
             const string PrivateKeryCertName = "PrivateKeyCert.pfx";
+            const string PublicKeyCertName = "Certificate.crt";
             const string PrivateKeryCertPassword = "1234";
             const string ImageFilePath = "Image.png";
             const string SignedXMLDocumentPath = "SignedXML.xml";
@@ -29,7 +30,7 @@ namespace SignImages
                 }
                 else 
                 {
-                    var integrityCheckPassed = ImageCryptographyManager.VerifyImage(SignedXMLDocumentPath, File.ReadAllBytes(PrivateKeryCertName), PrivateKeryCertPassword);
+                    var integrityCheckPassed = ImageCryptographyManager.VerifyImage(SignedXMLDocumentPath, File.ReadAllBytes(PublicKeyCertName));
 
                     if (integrityCheckPassed) 
                     {

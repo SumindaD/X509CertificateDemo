@@ -34,11 +34,10 @@ namespace SignImages
         /// </summary>
         /// <param name="xmlFilePath">Path to the signed xml image document</param>
         /// <param name="certificateBuffer">The public key certificate byte[] to verify the integrity of the signed xml image document</param>
-        /// <param name="certPassword">Private key certificate Password</param>
         /// <returns>True - If image integrity is intact. False - If image has been tampered with</returns>
-        public static bool VerifyImage(string xmlFilePath, byte[] certificateBuffer, string certPassword)
+        public static bool VerifyImage(string xmlFilePath, byte[] certificateBuffer)
         {
-            var certificate = new X509Certificate2(certificateBuffer, certPassword);
+            var certificate = new X509Certificate2(certificateBuffer);
 
             return VerifyXMLDocument(xmlFilePath, certificate);
         }
